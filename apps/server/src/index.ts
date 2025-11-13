@@ -1,10 +1,10 @@
 import "dotenv/config";
-import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 import { createContext } from "@my-term/api/context";
 import { appRouter } from "@my-term/api/routers/index";
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { auth } from "@my-term/auth";
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { Elysia } from "elysia";
 
 const app = new Elysia()
 	.use(

@@ -1,18 +1,18 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Card, Checkbox, Chip, useThemeColor } from "heroui-native";
 import { useState } from "react";
 import {
-	View,
-	Text,
-	TextInput,
-	ScrollView,
 	ActivityIndicator,
 	Alert,
 	Pressable,
+	ScrollView,
+	Text,
+	TextInput,
+	View,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { Container } from "@/components/container";
 import { trpc } from "@/utils/trpc";
-import { Card, Checkbox, useThemeColor, Chip } from "heroui-native";
 
 export default function TodosScreen() {
 	const [newTodoText, setNewTodoText] = useState("");
@@ -74,8 +74,8 @@ export default function TodosScreen() {
 		<Container>
 			<ScrollView className="flex-1" contentContainerClassName="p-6">
 				<View className="mb-6">
-					<View className="flex-row items-center justify-between mb-2">
-						<Text className="text-3xl font-bold text-foreground">
+					<View className="mb-2 flex-row items-center justify-between">
+						<Text className="font-bold text-3xl text-foreground">
 							Todo List
 						</Text>
 						{totalCount > 0 && (
@@ -99,13 +99,13 @@ export default function TodosScreen() {
 								editable={!createMutation.isPending}
 								onSubmitEditing={handleAddTodo}
 								returnKeyType="done"
-								className="text-foreground text-base py-3 px-4 border border-divider rounded-lg bg-surface"
+								className="rounded-lg border border-divider bg-surface px-4 py-3 text-base text-foreground"
 							/>
 						</View>
 						<Pressable
 							onPress={handleAddTodo}
 							disabled={createMutation.isPending || !newTodoText.trim()}
-							className={`p-3 rounded-lg active:opacity-70 ${createMutation.isPending || !newTodoText.trim() ? "bg-surface" : "bg-accent"}`}
+							className={`rounded-lg p-3 active:opacity-70 ${createMutation.isPending || !newTodoText.trim() ? "bg-surface" : "bg-accent"}`}
 						>
 							{createMutation.isPending ? (
 								<ActivityIndicator size="small" color={foregroundColor} />
@@ -127,7 +127,7 @@ export default function TodosScreen() {
 				{isLoading && (
 					<View className="items-center justify-center py-12">
 						<ActivityIndicator size="large" color={accentColor} />
-						<Text className="text-muted mt-4">Loading todos...</Text>
+						<Text className="mt-4 text-muted">Loading todos...</Text>
 					</View>
 				)}
 
@@ -139,10 +139,10 @@ export default function TodosScreen() {
 							color={mutedColor}
 							style={{ marginBottom: 16 }}
 						/>
-						<Text className="text-foreground text-lg font-semibold mb-2">
+						<Text className="mb-2 font-semibold text-foreground text-lg">
 							No todos yet
 						</Text>
-						<Text className="text-muted text-center">
+						<Text className="text-center text-muted">
 							Add your first task to get started!
 						</Text>
 					</Card>
@@ -168,7 +168,7 @@ export default function TodosScreen() {
 									</View>
 									<Pressable
 										onPress={() => handleDeleteTodo(todo.id)}
-										className="p-2 rounded-lg active:opacity-70"
+										className="rounded-lg p-2 active:opacity-70"
 									>
 										<Ionicons
 											name="trash-outline"
