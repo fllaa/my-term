@@ -1,0 +1,17 @@
+{
+	"expo": {
+		"scheme": "my-term",
+		"userInterfaceStyle": "automatic",
+		"orientation": "default",
+		"web": {
+			"bundler": "metro"
+		},
+		"name": "my-term",
+		"slug": "my-term",
+		"plugins": ["expo-font"],
+		"experiments": {
+			"typedRoutes": true,
+			"reactCompiler": true
+		}
+	}
+}
