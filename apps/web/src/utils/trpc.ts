@@ -24,8 +24,14 @@ export const trpcClient = createTRPCClient<AppRouter>({
 		httpBatchLink({
 			url: `${import.meta.env.VITE_SERVER_URL}/trpc`,
 			fetch(url, options) {
+				const headers = new Headers(options?.headers);
+				const bearerToken = localStorage.getItem("bearer_token");
+				if (bearerToken) {
+					headers.set("Authorization", `Bearer ${bearerToken}`);
+				}
 				return fetch(url, {
 					...options,
+					headers,
 					credentials: "include",
 				});
 			},
